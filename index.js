@@ -1,25 +1,17 @@
 function myReduce(array, callback, initialValue) {
-  //first parametr is an array for reducing
-  //returns one value after reducing
-  //see mdn web
   let index = initialValue == undefined ? 1 : 0;
-  let acc = initialValue == undefined ? array[0] : initialValue; 
+  let acc = initialValue ?? array[0]; // now '0' = 'true'
   for (; index < array.length; index++) {
-    if (array[index] != undefined) {
-      acc = callback(acc, array[index], index, array);
-    }
+    acc = callback(acc, array[index], index, array);
   }
   return acc;
 }
 
 function minMaxValue(array) {
-  //arr is an array containing either strings or numbers
-  //returns array with 2 elements: first - min value, second - max value
-  //requirement: to use myReduce method described above
   const res = myReduce(array, (acc, curr) => {
-    acc[0] = acc[0] > curr ? (acc[0] = curr) : acc[0];
-    acc[1] = acc[1] < curr ? (acc[1] = curr) : acc[1];
-    return acc;
+    acc[0] = acc[0] > curr ? curr : acc[0];
+    acc[1] = acc[1] < curr ? curr : acc[1];
+    return [acc[0],acc[1]];
   }, [array[0], array[0]]);
   return res;
 }
