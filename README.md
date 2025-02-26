@@ -1,5 +1,4 @@
-###HW#13definition
-
-#Write the method 'some' (see comments)
-#Write the method 'every' (see comments)
-#Write more test cases (console.log functionality)OD
+# HW#16 definition
+## Write two functions:
+### myReduce (see comments in index.js)
+### minMax (see comments in index.js)
